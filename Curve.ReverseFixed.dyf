@@ -1,0 +1,370 @@
+{
+  "Uuid": "7a95eec4-4759-4c9a-82fa-b5c82ac7e7bd",
+  "IsCustomNode": true,
+  "Category": "RAV.Geometry",
+  "Description": "Fixes Reverse in some cases where it wouldn't wokr more than once.",
+  "Name": "Curve.ReverseFixed",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "Geometry": {
+        "Key": "Autodesk.DesignScript.Geometry.Geometry",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Curve": {
+        "Key": "Autodesk.DesignScript.Geometry.Curve",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ControlPoints",
+      "Id": "5a9d3d09c4084c368f4833d70d496b4f",
+      "Inputs": [
+        {
+          "Id": "561c36d9328342efa22c6afbb69457b0",
+          "Name": "nurbsCurve",
+          "Description": "Autodesk.DesignScript.Geometry.NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8a7e0eb1feed4ab08e445c0494f37da4",
+          "Name": "Point[]",
+          "Description": "An Array of Points",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the control points of the NurbsCurve. These are the points that the curve interpolates.\n\nNurbsCurve.ControlPoints ( ): Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Reverse@var[]..[]",
+      "Id": "2a384b9f504a457eb14bfcd9e2d7f3e2",
+      "Inputs": [
+        {
+          "Id": "1e643f64be1146709a07930a0e4d6378",
+          "Name": "list",
+          "Description": "List to be reversed.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5d38c23d654e4b2c929c38b0ee40660c",
+          "Name": "list",
+          "Description": "New list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Creates a new list containing the items of the given list but in reverse order.\n\nList.Reverse (list: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Count@var[]..[]",
+      "Id": "c704273b9c11495e95980afa4379e0a0",
+      "Inputs": [
+        {
+          "Id": "91850e6114fa468f88cc9223624c831f",
+          "Name": "list",
+          "Description": "List to get the item count of.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5bd44e8ed88f473bbcc2e5da6344c763",
+          "Name": "count",
+          "Description": "List length.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the number of items stored in the given list.\n\nList.Count (list: var[]..[]): int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x - 1;",
+      "Id": "011de62e046f4e99bc294026ca13f703",
+      "Inputs": [
+        {
+          "Id": "469436cfcaf24723a02b46d011a62329",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "994b2cf69f7447c595fde91434b49f95",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.NurbsCurve.ByControlPoints@Autodesk.DesignScript.Geometry.Point[],int",
+      "Id": "4317f81267bd43f2b822a4b553956354",
+      "Inputs": [
+        {
+          "Id": "9c89264a88db4d6cb2ec440d82f2da1a",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "097deafff5574179b5396df22fcd3ac5",
+          "Name": "degree",
+          "Description": "int\nDefault value : 3",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "69099ea4b4f94e108e4938cd348f0072",
+          "Name": "NurbsCurve",
+          "Description": "NurbsCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a BSplineCurve by using explicit control points. NOTE 1: BSplineCurves with deg=1 have G1 discontinuities, which cause problems for extrusion, sweep, and other operations. They should be avoided. Use a PolyCurve instead. NOTE 2: If the curve is periodic (closed), then the first and last points MUST be the same.\n\nNurbsCurve.ByControlPoints (points: Point[], degree: int = 3): NurbsCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "nurbsCurve",
+        "TypeName": "Autodesk.DesignScript.Geometry.NurbsCurve",
+        "TypeRank": 0,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "1b01dd1c0be24a8c8a9529a38b4a420a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b03733bdcb1b4e3c9f87d9b487163486",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "NurbsCurve",
+      "Id": "2d784f679525480baacf6c5d4c65f49a",
+      "Inputs": [
+        {
+          "Id": "447e6ba27d5b4a52a8046c3b43712da0",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "8a7e0eb1feed4ab08e445c0494f37da4",
+      "End": "1e643f64be1146709a07930a0e4d6378",
+      "Id": "da022bc269474faf93950b2983ce2b5a"
+    },
+    {
+      "Start": "5d38c23d654e4b2c929c38b0ee40660c",
+      "End": "9c89264a88db4d6cb2ec440d82f2da1a",
+      "Id": "df77c6e57d8d49709ae87e47570185f0"
+    },
+    {
+      "Start": "5d38c23d654e4b2c929c38b0ee40660c",
+      "End": "91850e6114fa468f88cc9223624c831f",
+      "Id": "2320d8ec79034d25b724c892be017147"
+    },
+    {
+      "Start": "5bd44e8ed88f473bbcc2e5da6344c763",
+      "End": "469436cfcaf24723a02b46d011a62329",
+      "Id": "a497fe5fcfd94a5093d81ab41e829562"
+    },
+    {
+      "Start": "994b2cf69f7447c595fde91434b49f95",
+      "End": "097deafff5574179b5396df22fcd3ac5",
+      "Id": "0389982739834573b6a76aa296abe28a"
+    },
+    {
+      "Start": "69099ea4b4f94e108e4938cd348f0072",
+      "End": "447e6ba27d5b4a52a8046c3b43712da0",
+      "Id": "320eb3f73e08414095c1b25d50cff8b1"
+    },
+    {
+      "Start": "b03733bdcb1b4e3c9f87d9b487163486",
+      "End": "561c36d9328342efa22c6afbb69457b0",
+      "Id": "ff1a364dabda4ecda0c51cbd355a4a48"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.1.5354",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -3987.5958041404338,
+      "EyeY": 349.22046072977025,
+      "EyeZ": -58.637180117960469,
+      "LookX": 3361.5989987211378,
+      "LookY": -317.61505405643959,
+      "LookZ": 275.74581943003676,
+      "UpX": -0.12146139464659256,
+      "UpY": 0.99254615164132465,
+      "UpZ": -0.0099632561196875465
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": false,
+        "Name": "NurbsCurve.ControlPoints",
+        "Id": "5a9d3d09c4084c368f4833d70d496b4f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 291.10550603277022,
+        "Y": 23.602937438370873
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Reverse",
+        "Id": "2a384b9f504a457eb14bfcd9e2d7f3e2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 621.10550603277022,
+        "Y": 23.602937438370876
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Count",
+        "Id": "c704273b9c11495e95980afa4379e0a0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 874.10550603277022,
+        "Y": 36.602937438370873
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "011de62e046f4e99bc294026ca13f703",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1145.1055060327703,
+        "Y": 40.816270771704211
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "NurbsCurve.ByControlPoints",
+        "Id": "4317f81267bd43f2b822a4b553956354",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1343.1055060327703,
+        "Y": 10.602937438370873
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "1b01dd1c0be24a8c8a9529a38b4a420a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -28.894493967229778,
+        "Y": 23.60293743837088
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "2d784f679525480baacf6c5d4c65f49a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1677.1055060327703,
+        "Y": 10.602937438370873
+      }
+    ],
+    "Annotations": [],
+    "X": 73.190089177225559,
+    "Y": 371.07062426510186,
+    "Zoom": 0.67483165842686466
+  }
+}

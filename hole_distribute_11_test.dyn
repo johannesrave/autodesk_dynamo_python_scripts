@@ -1,0 +1,6481 @@
+{
+  "Uuid": "c2359448-5d01-4a7c-841f-5354479b4ab8",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "hole_distribute_11_test",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Autodesk.Geometry": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Vector.XAxis": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Vector": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      },
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.SelectNode, IPCNodes",
+      "ContextInfo": [
+        {
+          "Type": 2,
+          "Guid": "e141c8c3-eafe-4bc0-b072-e65b2650115f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "370bd6bb-297c-4c7d-a98f-37b1d465ccee",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "69f6b1ab-bc4b-4e4f-b0b5-6e8a4e017bf9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b4ca468e-5857-4c7b-824f-1fa6c4671da7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        }
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "7aa5697c87964ba19e9b51705d8aa956",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9ab86c97eeb84c8aa6b99469002ba36e",
+          "Name": "Geometry",
+          "Description": "Selected geometry list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select geometry from Alias scene"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Curve.ByIsoCurveOnSurface@Autodesk.DesignScript.Geometry.Surface,int,double",
+      "Id": "8d4c387fec3f439a88f9d4572bceb142",
+      "Inputs": [
+        {
+          "Id": "718b37a216ae4661b9a64505d4e10765",
+          "Name": "baseSurface",
+          "Description": "Base surface\n\nSurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "89599cc4fbdb42b8a6c4484f05024822",
+          "Name": "direction",
+          "Description": "if 0 isoline is along u direction, if 1 along v direction\n\nint\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "31cfb83ad5564067bde6658fc19ca318",
+          "Name": "parameter",
+          "Description": "fixed for the curve value of other surface parameter\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e553d47dcf0c4e34ae0bd1545abf3022",
+          "Name": "Curve",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "CrossProduct",
+      "Description": "Create a curve by isoline of surface\n\nCurve.ByIsoCurveOnSurface (baseSurface: Surface, direction: int = 0, parameter: double = 0): Curve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.PolyCurve.ByJoinedCurves@Autodesk.DesignScript.Geometry.Curve[],double",
+      "Id": "05da563dd03c49089edcf32a002fcadb",
+      "Inputs": [
+        {
+          "Id": "32d5f958cc9d4eaea04a3250debae538",
+          "Name": "curves",
+          "Description": "Curves to join into polycurve\n\nCurve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "29651aafd2dd4359a02a82bd1270929d",
+          "Name": "joinTolerance",
+          "Description": "Tolerance to determine size of gap allowed between curves to be joined\n\ndouble\nDefault value : 0.001",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6c7ce549f7db46a4b18c8d9551a87bd9",
+          "Name": "PolyCurve",
+          "Description": "PolyCurve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Make PolyCurve by joining curves. Flips curve as needed for connectivity. Choose a preferred join tolerance between 1e-6 and 1e-3 units.\n\nPolyCurve.ByJoinedCurves (curves: Curve[], joinTolerance: double = 0.001): PolyCurve"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "7d3b1d8d8f9d48aab703f18d8f7a17da",
+      "Inputs": [
+        {
+          "Id": "3362ffca380e491ab747c95e6ab4ec15",
+          "Name": "lists",
+          "Description": "A list of lists to be transposed.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e2704f9c0b104faa81cd39c7989d1cbf",
+          "Name": "lists",
+          "Description": "A list of transposed lists.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Swaps rows and columns in a list of lists. If there are some rows that are shorter than others, null values are inserted as place holders in the resultant array such that it is always rectangular.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "(0..1..#x);",
+      "Id": "f1b6424b6c624589973d17d1f97419c7",
+      "Inputs": [
+        {
+          "Id": "a810fa802dad489790852bea80660fe4",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f33dca5eb5f1437cb02bb5de0913364a",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Curve.PointAtParameter@double",
+      "Id": "e7755dbc1b2c4b04b9e770277a18a447",
+      "Inputs": [
+        {
+          "Id": "e2efe89e565743f4b0e997924bee07a9",
+          "Name": "curve",
+          "Description": "Autodesk.DesignScript.Geometry.Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0dc7b7397f9849b695c2c52f23679014",
+          "Name": "param",
+          "Description": "The parameter at which to evaluate\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2ac165eb0da4444292f8cad042aae016",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "CrossProduct",
+      "Description": "Get a Point on the Curve at a specified parameter between StartParameter() and EndParameter()\n\nCurve.PointAtParameter (param: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.DistanceTo@Autodesk.DesignScript.Geometry.Geometry",
+      "Id": "fa5761e21b12458084b597613517e4a8",
+      "Inputs": [
+        {
+          "Id": "30c86ef8e25e4faa9cf098232bce7e4b",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fcb5fa2dfe094ee1b0c9426c07f43eed",
+          "Name": "other",
+          "Description": "The other Geometry\n\nGeometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "42e02f01318342c79866a75c01c6dfd8",
+          "Name": "double",
+          "Description": "The distance",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "CrossProduct",
+      "Description": "Obtain the distance from this Geometry to another\n\nGeometry.DistanceTo (other: Geometry): double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.MinimumItem@var[]",
+      "Id": "6900047df7f14248bd155e37ef0a3271",
+      "Inputs": [
+        {
+          "Id": "d83e393a0efe4084bf9979061aeb2a93",
+          "Name": "list",
+          "Description": "List to take the minimum value from.\n\nvar[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "548e516bb91343199fea7f3a2489f7c3",
+          "Name": "min",
+          "Description": "Minimum value from the list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Returns the minimum value from a list.\n\nList.MinimumItem (list: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "c681142ed8a949e49778a223aedadcb0",
+      "Inputs": [
+        {
+          "Id": "68ec7bc51cca4866896f9969220461aa",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "181c995722444cbd89a1bc7ecab999a9",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "be1c99c7212946388a96fa6d4649ebfd",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "b0648dd63df042b584b4230bd61b37c1",
+      "Inputs": [
+        {
+          "Id": "18e7c1f438e740f2b56d92b88abd4dca",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dfe7c19bd0424a5c9cc1c38324779b89",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "12bf0c5c4a6b46cd91443ceb0418b622",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Longest",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.IndexOf@var[]..[],var",
+      "Id": "6fb5f05189f347118b466e79237889de",
+      "Inputs": [
+        {
+          "Id": "0d6126ad765b4942a614acbc682a934b",
+          "Name": "list",
+          "Description": "The list to find the element in.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6b37e8d6f4aa40988b3801391d4803db",
+          "Name": "element",
+          "Description": "The element whose index is to be returned.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e15d662a9407447c92097c53bb2b29e1",
+          "Name": "int",
+          "Description": "The index of the element in the list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Longest",
+      "Description": "Returns the index of the element in the given list.\n\nList.IndexOf (list: var[]..[], element: var): int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "a1495da7415042578064b258f424a04d",
+      "Inputs": [
+        {
+          "Id": "8638e2d6a9e84ce7ab1f34bdaae024e6",
+          "Name": "list",
+          "Description": "List to fetch an item from.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "84856edda5114730b9b728ec29d7d985",
+          "Name": "index",
+          "Description": "Index of the item to be fetched.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "437e47430f6b4e2cbd6b55e15ff1f8e7",
+          "Name": "item",
+          "Description": "Item in the list at the given index.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns an item from the given list that's located at the specified index.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.UVParameterAtPoint@Autodesk.DesignScript.Geometry.Point",
+      "Id": "42700d28247a4a469ff7a6993091cafa",
+      "Inputs": [
+        {
+          "Id": "0592d9eb239a4d9daf0357fdd117cb43",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3c707ca2f8124cfab0ccd46ba9017de9",
+          "Name": "point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f054103f1e454fe482da893140c2bec7",
+          "Name": "UV",
+          "Description": "UV",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Shortest",
+      "Description": "Return the UV parameter pair at the input Point. This is the inverse of Point at parameter.\n\nSurface.UVParameterAtPoint (point: Point): UV"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.CoordinateSystemAtParameter@double,double",
+      "Id": "60b500d9130e473580c7d2c6652a1671",
+      "Inputs": [
+        {
+          "Id": "9e30a1e11eb34e12a8c0734cbf9bd7ef",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b00b3afde168489a903bb86ae0755570",
+          "Name": "u",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6cf88ab4bbab4d6680a33aa1e74aef27",
+          "Name": "v",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f449b45179844ef2821b83d4a251f8a5",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return a CoordinateSystem aligned with principal curvature directions.\n\nSurface.CoordinateSystemAtParameter (u: double = 0, v: double = 0): CoordinateSystem"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.UV.U",
+      "Id": "cf11ff25be79496cadbf8bb25ad8d3f7",
+      "Inputs": [
+        {
+          "Id": "b171752d8a0e428db40984e118ac5848",
+          "Name": "uV",
+          "Description": "Autodesk.DesignScript.Geometry.UV",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "be2e1acc00e8455899e03530e3f8eda0",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the U component of a UV\n\nUV.U: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.UV.V",
+      "Id": "0abcab873b834b60898c2d18f47caa6b",
+      "Inputs": [
+        {
+          "Id": "0977cdf5c70d433abff128aba451225a",
+          "Name": "uV",
+          "Description": "Autodesk.DesignScript.Geometry.UV",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d03329966a50490cbcfff2ffd8e073e8",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the V component of a V\n\nUV.V: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Transform@Autodesk.DesignScript.Geometry.CoordinateSystem",
+      "Id": "c01c9e7b0c804b3ca22465b51e923e02",
+      "Inputs": [
+        {
+          "Id": "bc8e6ce5a6b242c1b822574d92100b14",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a4ebd8c64ca348e48f2cefaaeedf248e",
+          "Name": "cs",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "91ff1ec5890b472f9acb7e2a1c12660d",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "CrossProduct",
+      "Description": "Transforms geometry by the given CoordinateSystem's transform\n\nGeometry.Transform (cs: CoordinateSystem): Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByRadiusHeight@Autodesk.DesignScript.Geometry.CoordinateSystem,double,double",
+      "Id": "e68701187d894d029e02d0e38f982fe7",
+      "Inputs": [
+        {
+          "Id": "0b6d4bba6f6449f7bf5821e598157d00",
+          "Name": "cs",
+          "Description": "CoordinateSystem\nDefault value : Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1e49b8f7fea844e89a965352c0535cf3",
+          "Name": "radius",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "081f7711c4d041baa78e4acbd59662a5",
+          "Name": "height",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "22ada324dcda4375b9c3bbbf51d6906b",
+          "Name": "Cylinder",
+          "Description": "Cylinder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Construct a Solid Cylinder defined by a parent CoordinateSystem, the radius, and the height of the cylinder\n\nCylinder.ByRadiusHeight (cs: CoordinateSystem = Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0), radius: double = 1, height: double = 1): Cylinder"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "MaximumValue": 15.0,
+      "MinimumValue": 1.0,
+      "StepValue": 0.1,
+      "InputValue": 3.9000000000000004,
+      "Id": "d5db8eaaee474052a45bed8ba1f4f2f7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "55b1efae179244fcb6d2399f83867c04",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces numeric values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.SubtractFrom@Autodesk.DesignScript.Geometry.Solid",
+      "Id": "758aed97d05f4342ad7d024ae6364f0f",
+      "Inputs": [
+        {
+          "Id": "8ed9039b7b764eb88b7c0710522c1dc7",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f7520765c99c4934a924908ae1620848",
+          "Name": "trimmingEntity",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "96eb7fd3fe4f4bb09608792922da3bbe",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "CrossProduct",
+      "Description": "Subtract the input tools from this Surface.\n\nSurface.SubtractFrom (trimmingEntity: Solid): Geometry[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByUnion@Autodesk.DesignScript.Geometry.Solid[]",
+      "Id": "263b63d3d5fb4a0a99f45cd48391f783",
+      "Inputs": [
+        {
+          "Id": "b9a64a8c9821460d9cc74933929ad827",
+          "Name": "solids",
+          "Description": "A collection of solids\n\nSolid[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2eec1ae301f84775828f7261296b1afc",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Union a collection of solids into one solid\n\nSolid.ByUnion (solids: Solid[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin@double,double,double",
+      "Id": "888169693b284549898b5ac984c98b28",
+      "Inputs": [
+        {
+          "Id": "941391f54e7c4b0f9aa73fc63db0f962",
+          "Name": "x",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33387b0f1a89445a8fa4159f304891e6",
+          "Name": "y",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "48b007da88b7460096120e60af9307cb",
+          "Name": "z",
+          "Description": "double\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "12e687de80414b9eaf6dfdf8a34e1cf4",
+          "Name": "CoordinateSystem",
+          "Description": "CoordinateSystem",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create a CoordinateSystem with origin at X, Y, and Z locations, with X and Y Axes set as WCS X and Y Axes.\n\nCoordinateSystem.ByOrigin (x: double = 0, y: double = 0, z: double = 0): CoordinateSystem"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-2;",
+      "Id": "ed212ab2656f4950ac010aa156bcae06",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "418f8569cd6b421ab3557235f3d3f129",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 2,
+      "MaximumValue": 8,
+      "MinimumValue": 1,
+      "StepValue": 1,
+      "Id": "7030d483654147fca2736983f2c758bd",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f2f820731763494baa189c3ec70c1413",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 19,
+      "MaximumValue": 70,
+      "MinimumValue": 8,
+      "StepValue": 1,
+      "Id": "a693075a055740eb809e73dfade1f695",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "34853d8244a7460cbdfc36e69e7d21a5",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x/2;",
+      "Id": "a5238f2c2c134b2f92f3507cbde5694c",
+      "Inputs": [
+        {
+          "Id": "32ed062a72cd48bfb5ae54abb9f17fe0",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f5d2e2c8eea64f0ba759a7181d8ae57f",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "5;",
+      "Id": "3da547cbdb3d4901b88194034b2687c1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "aaf452ece88c4b08a2e2be6880877e07",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.BakeNode, IPCNodes",
+      "NodeType": "ExtensionNode",
+      "Id": "80cf03bdce47434e9c13ee9d5ae295a3",
+      "Inputs": [
+        {
+          "Id": "05eceb7a3da64ca2bd2911b6e518f571",
+          "Name": ">",
+          "Description": "Geometry to output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7ea82ae554494c4293e67863ee462eaa",
+          "Name": "Geometry",
+          "Description": "Geometry to output",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Output geometry to Alias scene"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "cb2ffaaafdf5482391a795e87a1cf6a7",
+      "Inputs": [
+        {
+          "Id": "b475974141404a94a20facc621039f37",
+          "Name": "",
+          "Description": "Node to evaluate.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a709f94fcc7c4289b7aa7ec3cc125684",
+          "Name": "",
+          "Description": "Watch contents.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualize the output of node."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.Thicken@double,bool",
+      "Id": "aa562f978fb94d7cb3974d10c571eb90",
+      "Inputs": [
+        {
+          "Id": "24196d52fae742f58047e4973002d927",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f62d15b6b7f24bc48fa108a09af809b8",
+          "Name": "thickness",
+          "Description": "double\nDefault value : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a1fac52fece4389b434ea4fbc8e2fdb",
+          "Name": "both_sides",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a08c4f2f16c34536a99a58549db43b1e",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Thicken Surface into a Solid, extruding in the direction of Surface normals. If both_sides parameter is true, surface is thickened on both sides.\n\nSurface.Thicken (thickness: double = 1, both_sides: bool = true): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "x*4;\nfalse;",
+      "Id": "cd0a426236b448349bc9aec0a450c466",
+      "Inputs": [
+        {
+          "Id": "643571f75f1c4234ae301fe21e125559",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8c44246ccd4a4cdbaa97eded4ad0d2e8",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e0506d90383d4bd0b7fca7b0a3b86ebe",
+          "Name": "",
+          "Description": "Value of expression at line 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.PolySurface.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "d1493b80e61e46df8c3856598557672b",
+      "Inputs": [
+        {
+          "Id": "f5f5fb4829e14c69806d91bfcb1b5509",
+          "Name": "surfaces",
+          "Description": "Surfaces to join into polysurface\n\nSurface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6df8e12c75dd46b19447dca59f364c2f",
+          "Name": "PolySurface",
+          "Description": "PolySurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Make Polysurface by joining surfaces.\n\nPolySurface.ByJoinedSurfaces (surfaces: Surface[]): PolySurface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.PolySurface.BySolid@Autodesk.DesignScript.Geometry.Solid",
+      "Id": "faa22fe874a74a52a311e263f6240b86",
+      "Inputs": [
+        {
+          "Id": "24b8d919ff2e45589813666e3a4e5600",
+          "Name": "solid",
+          "Description": "Solid which surfaces to use\n\nSolid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a3a496bbbc3c45b6a2d52a123a4d86d6",
+          "Name": "PolySurface",
+          "Description": "PolySurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Make Polysurface by surfaces of Solid.\n\nPolySurface.BySolid (solid: Solid): PolySurface"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.PolySurface.Surfaces",
+      "Id": "9304c890d49245be9ea32e4629854ea4",
+      "Inputs": [
+        {
+          "Id": "360dc33347654209b76bdc64d19f00da",
+          "Name": "polySurface",
+          "Description": "Autodesk.DesignScript.Geometry.PolySurface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4266e64d16ab479eb9ffa97865893dfb",
+          "Name": "Surface[]",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Return new Surfaces representing the underlying Surfaces.\n\nPolySurface.Surfaces ( ): Surface[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.SubtractFrom@Autodesk.DesignScript.Geometry.Solid",
+      "Id": "739c9968bbad4b999faff424ce716c29",
+      "Inputs": [
+        {
+          "Id": "0b5822c3755e45b18f676ba69afa37a7",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ddfd3eb1ebd841d6aaf56a9b60130ef7",
+          "Name": "trimmingEntity",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "894eb0877bea47ffa46e3b493fea8879",
+          "Name": "Geometry[]",
+          "Description": "Geometry[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Subtract the input tools from this Surface.\n\nSurface.SubtractFrom (trimmingEntity: Solid): Geometry[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "9134f490bc43466697ba44710d5f074e",
+      "Inputs": [
+        {
+          "Id": "b1636045cebe450588d39525724b1a8d",
+          "Name": "item0",
+          "Description": "Item Index #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5854441129b2426b953f5db55b37fa2b",
+          "Name": "item1",
+          "Description": "Item Index #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "38eec09142724c9a97be7a7018349646",
+          "Name": "list",
+          "Description": "A list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Makes a new list out of the given inputs"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Clean@var[]..[],bool",
+      "Id": "3c3a3c5f38fa45879ea021bc4ab6c819",
+      "Inputs": [
+        {
+          "Id": "0c2a06016b9842009fb4e3f1e8cc3eb6",
+          "Name": "list",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 1,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "72a698c176594eb8827192a169e3614f",
+          "Name": "preserveIndices",
+          "Description": "Provide an option to preserve the indices of the data such that non-trailing nulls may not be filtered out\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8db4bf532d7f44d08a6c0a5f74ee27f4",
+          "Name": "var[]..[]",
+          "Description": "A list cleaned of nulls and empty lists",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Cleans data of nulls and empty lists from a given list of arbitrary dimension\n\nList.Clean (list: var[]..[], preserveIndices: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "fb94a2c6c8f042ca8feffa1481ac7f9b",
+      "Inputs": [
+        {
+          "Id": "ab6d6ee4cdd3447ab7ba77f480156499",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "66b333340de64a79bd1274ce65832e56",
+          "Name": "amt",
+          "Description": "Layers of nesting to remove.\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "94a280a5049b4f9c9c658c31fd28eaa5",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "lst = (0..1..#(x+2));\nlst_cut = List.Slice(lst,1,-1);",
+      "Id": "ab50988be94f43e8902231c8020c2cc4",
+      "Inputs": [
+        {
+          "Id": "4c8c20e585784fc8ad619d1d8e325282",
+          "Name": "x",
+          "Description": "x",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b452fad975cd45cf81a3f52de4499a49",
+          "Name": "",
+          "Description": "lst",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9fe896639e5c4049952efad403a04e78",
+          "Name": "",
+          "Description": "lst_cut",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 0,
+      "MaximumValue": 1,
+      "MinimumValue": 0,
+      "StepValue": 1,
+      "Id": "ca88ca657ec141cd98ad946d8c16c8f4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a3992c7783e04960809019a87a75050a",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 1,
+      "MaximumValue": 1,
+      "MinimumValue": -1,
+      "StepValue": 2,
+      "Id": "8e8a4dc07d524e1395f88d138acd8891",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "560fd8598bd74ae98757650b17aeeecd",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A slider that produces integer values."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Translate@double,double,double",
+      "Id": "2098a30097c34e44837a4dab4799c31d",
+      "Inputs": [
+        {
+          "Id": "c29e668e75b34ffca47e15c5fa68baa2",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a6a4a243dc5428eac4edc607956d58d",
+          "Name": "xTranslation",
+          "Description": "Displacement along X-axis.\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eac3ac1d80ae460e82f3c6e7ef48caf1",
+          "Name": "yTranslation",
+          "Description": "Displacement along Y-axis.\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fce184b3596243b4a207c63915460ee1",
+          "Name": "zTranslation",
+          "Description": "Displacement along Z-axis.\n\ndouble\nDefault value : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6d4e342212574a0b8c429d4e424a60ff",
+          "Name": "Geometry",
+          "Description": "Transformed Geometry.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Translates any given geometry by the given displacements in the x, y, and z directions defined in WCS respectively.\n\nGeometry.Translate (xTranslation: double = 0, yTranslation: double = 0, zTranslation: double = 0): Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-200;",
+      "Id": "60edba30668f4a77bb425b0b0dbc7c85",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "031e2a4e8c394517b97e3e7a9fe87cad",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.SelectNode, IPCNodes",
+      "ContextInfo": [
+        {
+          "Type": 2,
+          "Guid": "af366a2e-71c7-4b9b-8486-23e9c9520e01",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f8fbf2bb-4551-476b-9f7a-cd8cd31953a8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2d931084-20b8-4152-8eae-6bfc91c27d9e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1a95f38f-0d74-4920-bba7-8c398c9ab20d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "64797f6b-a4be-4b55-aa7c-bbea6d596296",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "795ae68a-e480-4ef1-a045-662855219c04",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c5d0a139-9667-4e7b-837c-f83e886ccf06",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d4fdf73e-f867-429e-a4e3-d344afe53a02",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "96524ba0-3392-447a-94f5-3aff39feadc1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f5019dfb-1e97-4665-9941-b26eab7ea0c3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "94ba4294-3415-44dd-b9d1-81b3f4ce526c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6621294e-e914-4ff1-8d55-a6183d55a0aa",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e1e6ad9a-9e6b-46e8-ac05-17b80562c255",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7a44e130-10f2-43ad-8250-0032a3edef2a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e2b62e3b-f2db-416b-8749-b92cfade3835",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "76d75b7d-45ce-4e52-bd8d-87a7d49f2897",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "50225018-e403-440d-9b40-bd808a336a66",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "982d4946-71ae-4867-b7aa-5260a99ef7c0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9c4b40a5-5a72-458f-b8b8-71f7c9a98682",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7b52d9bb-964e-488d-839a-62805c87cf16",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6da7e22c-d5e0-4eba-8be4-506e2a5394fc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "bfce38a0-322f-4e96-b2d8-0dc43cda30f8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "76d49490-8849-4c2e-94e3-6ef817df0317",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f74f8c89-ddfb-4c1f-b0ef-2e00f3168163",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3f8311e2-19dd-4784-8147-91e165e5b00c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "486e0334-c891-44bf-90eb-09c264c0409a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d7d6cccc-64da-4737-ba3c-567e60333f66",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3fa854d4-c54e-4e56-8eb2-d1fcfef8d260",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5b7d780e-81f4-4767-b035-a5869ca08cc5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "17b55902-0d06-4ad6-98b3-3d4d25551610",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f2cc5176-0077-4cb4-aee8-56b317a40ea6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e47277b3-2e96-44a1-8df6-abfec76df522",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4a2ff616-51cc-4b9f-82dc-0d84e15af234",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3970da00-7d50-4c3f-8e39-12a1359de043",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0ab70de8-e084-4d21-a29a-b11b7da88e39",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e871872e-9071-4069-8aa2-95ec16fc4ee1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ee6b725e-99ba-43e9-b06f-be91d640e6db",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b47161e8-5efa-49b2-9420-a9671736cec2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f3154869-6960-4451-a70a-5c9b1ab8bef6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fecb1b96-100a-4cc0-bdca-dd99abf4024e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3038a5b7-6555-4dfa-b235-7ee40aba65ae",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "73488fce-a0cb-4917-bd5c-41a8d4e9f196",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fdbed9f5-1121-4c4b-8c05-7b16495fb695",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a2046de9-3d5e-49ef-911f-e290fdc89806",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c2cc8cee-23e0-4f3d-8b7f-46a2ba9e0f9b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "173c0048-7ad7-4c97-b1ee-0a994d283240",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "078e8ac3-9d0a-4b90-b116-4857ff16c0ba",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "bd3cff75-b6d5-4fef-be78-49d009dcd892",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8ce49e59-988a-4b30-8a9f-b4edf3e46b07",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ca20c262-2439-47b4-a011-ad334879f18b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7803fca6-85a2-46db-bc3f-a38055a57aa5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "34707427-ba48-471b-aec4-eda672193da2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f6bf0232-2a90-4e8e-9d98-09a2fcde95d4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "db871fea-03a3-46fd-88bf-242e1b8a21af",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "bf3a3924-e98e-4e65-84ff-b3c1994afc41",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "76eac711-950d-488a-9af4-92c0ac3207e7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0b7deb19-3c9e-4838-977f-6e668561743e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7786e131-490f-4e17-9ec5-e98c7bb93c04",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0206982d-fbc1-4e0f-9c23-301899ceda8d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "43867791-e238-4ac9-9570-32a0195ff923",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9e43666d-30d6-44fa-875a-05f524b12cda",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "dbee0337-6e32-45ae-b2c3-96b838e16323",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "dcfaaf5b-f8e2-4b05-9bfc-602498051f30",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4553716c-c132-42d5-b515-cc73ace74ff8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8bcf1b7c-da9d-40d1-9da5-e1256d7f42e5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fdba85fa-3c0e-4b70-8460-6c03074fa02f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e61d2249-dcb3-42e0-8014-5683fa99e013",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "36cbb0c3-d10d-443e-ba4c-4eac0ae37ece",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0e17130a-eb0e-459c-89a9-71c07c9ace17",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7a265156-08d3-4ad8-8295-420b6f470256",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1e109976-7341-4a11-8c8a-11da4810db26",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9946f0f3-5cb7-458a-bec2-39c6dd7645fc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8382f486-6738-4c8e-bd57-9fbf82ca2c88",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "47c250a4-d7a2-455d-80e6-d23aac2ea3ee",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ae265056-9e1c-4c84-8974-8b5acfec90b0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "04b8b940-549a-4677-8030-7440bb157186",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4c0fb2aa-1b34-44a9-b9df-c4556502ef2f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8a6aa031-92b4-4eb4-9acf-e5391f5390e1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "02f98e80-a983-4b16-af08-9094371638c3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "90830b1a-90b5-498a-ae8c-065b88b04475",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f184a6e2-8473-421b-b6c6-5abfda4f66b1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7e13ed94-812e-4171-8c9b-b8ca5b004d11",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1cd21389-73d3-47a1-ac52-eefc2c03cc7f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1192401f-7121-4687-a8ed-69629579c8fe",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ddce465d-c2f0-4f2d-b36b-2a61fba12f27",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "dbda8fdc-3b24-4f92-86af-b7583d3c975e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "78cb5527-29ed-4b5b-ada7-14b9059b1f70",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8cebb8d1-2481-4352-a6bc-6fd6f3b13355",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "107aa671-da07-4bc8-9f97-f1acecac30ab",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "927fe595-7469-4b3d-adfe-c6fd803da116",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e356d669-118b-4f99-96e3-96ba228a001f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a73bf130-eaa2-4455-a6fc-50fcdbff089c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3db94735-0921-4512-a3fb-f814705fe33f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0f394e6d-33de-419c-98f2-1840f1d053eb",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8b2822da-10eb-405e-958f-37bb01f311a0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3f635e4c-19c6-4f02-bb58-7a58137601ec",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "918467c3-d870-4a41-8f63-cb60e56142e8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0eb76280-33c1-4d0e-abc7-8648bbe553f8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4a6058cb-317d-4c52-aca5-73b79e825830",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3e93bc76-19f3-413e-8bf2-4b4150181405",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "10d31fd8-65f8-4527-aba5-f076deaf4658",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "28bd2f1f-b7e9-408e-9dcd-eb7ba1f73fbd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7fbfe8cd-e5fb-4d4d-873a-ec2bc44e529e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "36a6e002-53d1-4821-8826-77b617a54536",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3ab9c505-9431-4848-9811-b5f3e8198538",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0eaeffb6-7a56-42cc-a13d-55b331ff162b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "08411c8a-366f-49a1-a21f-cf79a534c5ca",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f22411c7-a206-47e7-8933-9692a32b3e15",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b62d16f8-46cc-467a-b9e2-63c7a6dc1158",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fb6619e8-e365-4db8-a819-aebb3ecc9edc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2156e18b-5273-4e1e-8c98-b7a73f004629",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "87680e2f-0b3c-48ef-8cf4-6b40f7a65fce",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "44949483-4385-427a-9c3f-8d2a73cb25ca",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4e058c33-6593-4eb9-b896-fe8e3b81231d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a766bec6-146b-4c26-a161-891853bd465e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "aa277a76-13c3-4d6a-874d-7c526bb6def3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "abb9dcc6-a6b2-4463-ba85-1f132be0c265",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d7b67368-9386-462d-a799-906c41306514",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "39fe618a-db9a-44bb-aa89-dd893a849818",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fc52d680-93d8-4fe7-a54b-2608303797a9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "98e45515-8627-4b72-bfd5-9404e98e0610",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fdbeb022-c872-4d8a-ba61-747a4d4a04a3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0d985b81-93fb-49eb-857b-c147d7f20a9d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d45a4596-92a7-464f-9732-f27def57f65a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f74f93b4-d4b1-420d-bfcb-b0d673525527",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "494d167e-09e6-4584-92a0-5b55e589fa7f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2608dc4e-add1-4a18-950b-d5eeca952bfe",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "82027423-c846-4dcc-9c35-1cf5af7033b1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "53051623-3007-43fd-b279-ee253d933326",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e22f8eb4-e8f6-4e3d-b2a9-9c022c2f57f5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9ec57db4-33e1-4fc1-9997-b4daa174e444",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b97e8ba9-4e5c-416e-9e97-ff34d1b06caf",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "90ddefd3-b48c-4430-a69a-63fed451df4b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "db9b6f26-596a-4916-9ecc-53c97d6693b0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "82724b91-6556-4a95-9527-3f12e38f1d40",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "65c1272a-160d-4c8d-98c4-427ee21ee5e1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ac5c50ee-b794-4d67-829b-1705567d621e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ace7ebb7-e045-421e-839c-687358229605",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d0c4c758-71f9-4000-9d66-684352287c79",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "31e747f6-590c-4ce9-90b8-fa0303e40820",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3c0b0c44-4add-4ccd-88c1-738861354f56",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1a7ab0a8-386f-41b2-83a2-8d336ade0162",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4058cb56-3961-4145-a567-dfe4a2bbc73b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3efde49c-90bd-48a5-8362-867b788954d4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "467453c1-756a-4d8a-8f62-44e39b1e7826",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ec8ed393-011d-49a9-b915-f05e4e934873",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5a131480-3c53-414b-99de-5f3193046a1a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "19d1ceb4-8531-440c-b2b3-8d2e95211a65",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "aa37b8c3-cd8c-48ac-92ce-2ffa5c01f9ed",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "216c5f16-4790-405d-b08d-491a15ce4594",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b258eebd-8cb9-4483-9b3d-0e2823f8d302",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ea8eeaa7-f39a-46fc-906b-e96a8a8de5b2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ca69b931-46f2-4450-8ab4-f370ecb53425",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f462eac5-543a-4d62-b89e-8d2786832e4c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f830f9ac-a547-4262-99af-8c4cfbf9fb21",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ee872ed0-dea3-453e-aa68-bd9f8d50f3a1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "499dc9b5-d76b-42be-9520-9635452e030c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "09674947-1f80-4405-b96f-cb23fa529d4c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "dbf0106a-e12f-4d9f-9f79-b65c19bff2d4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7330658b-6a40-4a7b-9047-e8389b1ccaa3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "af77b737-5b12-41a5-a16c-fd5dee34a469",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0fbc6961-fddb-44d5-b7ed-e53de4e708ae",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ec6f2cce-de8a-45bf-90eb-bf28a366a095",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6e3077d9-3888-46e6-b7b9-1f8e143b8837",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3f431a3c-197c-4e31-80e5-d10327c49515",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5aa8c263-7e7f-4438-a2cb-aecd469b10cc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7f13507b-95dd-4ecd-a6a0-c62fabf208b7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "766a88dd-aaf4-4b3f-a0ba-c311ab681f5f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d4f2ce6b-66df-4aeb-9e3b-4e0b150345f4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fef541d3-6d16-49a1-8711-555bf184759d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4f6e6e64-91f0-4b34-8d9d-e227d021e49c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c2578501-9be7-40d0-ad17-b06d47c4f99b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "909ff52f-8892-4fd7-80e0-1873381158e4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fa049d93-7866-4769-8071-74e494bc4e92",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2cc4aeea-b339-4f72-9d17-2d33adcad25e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8c959f1f-ff9a-4392-9ecc-e8533ab6c4ac",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b2e6ad35-52ba-4fbb-a75b-233e9b97d7cf",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2f8ac87b-51c9-47bc-8fe9-45a8201f5bc8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "94637cbf-63d7-41a5-b627-bfcbc5c8d322",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3abf3bb4-2b1e-4cd7-a0bf-7428e930d51b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "55c5041c-2f2b-45f8-b018-d73168837240",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3a81a7e3-9427-4d99-b7ca-c1a6751ea590",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1a586f68-fccf-4166-8e5f-fd4a38ed4cad",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4ea12605-c5e8-433f-b21f-2a39b75dfda4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "94f35c88-f37d-41ce-9084-d377ba9d5342",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "300be130-9c1e-4786-a64c-8cdda16c320c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "de4ecad1-cdd5-4094-8cc6-9153bdb8c638",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c32a91ea-ae81-4492-b4d3-0469534a66ef",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b6a2a5e8-e455-47bf-bb97-ee2b316953dd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b7ef478c-4b69-43f5-8630-729cb9fd4018",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d1be9fa4-bd0c-4cdf-ae27-d2818cfd44a6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7ad5d1e7-fc1c-4df1-a0e3-05ef72649595",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d854ce06-1512-45b8-8592-e072b046a489",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8f026064-cfd5-43a2-854e-34686a3cb8fe",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "297990cc-6576-4d59-bea3-0454afa6409a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3a6882b0-91e9-441a-887a-db5f09201189",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ba829ff6-d529-412e-976a-ee02c9a6ff25",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e1852652-b370-41f2-b893-8ee1a8f32127",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0c0c6925-8e25-4659-a0ee-386e1b3811e0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7c886404-c898-4932-a8d2-49f34d336ae0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9900d88c-1a63-4dd4-8035-a3201c6ef6e2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8e89090a-5d16-4a88-92fe-8e5c07caad03",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ac2b0822-c8bd-4d24-9f02-e693d1949ec8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "17136f66-8d38-42f4-8da4-852376a640c1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "50e154b6-6821-42fa-a0d9-6b2317ec5d19",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ae7391c0-f403-48e6-bb3b-fc6c5c1ef5b5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2e99f812-a35f-4199-b309-56027d11bb33",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "020c8030-be9b-4ed8-8561-c3bd290c1157",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "18367368-9239-402e-a45f-2d9df9562331",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8c5ed81c-b6b9-4d71-a115-db6a1be45607",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "86ebbc98-7c4d-4437-bfba-ba3285724a19",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a4b3cf24-13c6-48c5-a87b-c1eeee75aa82",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "523e6f43-8e62-4b46-b6a7-d7232cdadf1f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9c4173d3-ce1f-4e76-94c4-e3c3ee0274e0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2fa9ebdf-562e-44c9-896f-a6473606323b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "dc6bca6f-e653-4182-9ed8-473e1898e296",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "aa16d3d4-a624-4af1-b871-6f68caaa5ae4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "88acaf3a-5835-4d82-956d-56d0d3591fe3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "daa20933-1356-4dda-8acb-8e8957d5b290",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6b567ebb-0952-4f98-8f79-ca42474d9445",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4ac626b7-57b3-4644-8976-c286df965ded",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f42acac3-7529-48e3-ba7b-3be2781ee12c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0719a474-1e53-4f67-80ff-42041131c999",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3e5022b5-5f8c-4a34-9ac2-1a54d3188630",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "50fce3cd-6505-4d55-8c79-bf75475e4f35",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c334adf9-aa04-495e-b57b-9bf7c9ff30ff",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "da3a598b-b3c7-4049-8e8b-8d69a160ae43",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a0246ab6-f789-492f-8b06-4a38a51f4b0f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0b7af8eb-8775-4143-9964-0a1f8f22e106",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "19c19c53-80e1-4cdb-bec3-3e86fdeb5f71",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "68b1b9ea-953b-4fd6-aa82-8bbc29334d58",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "832d96b7-c020-4bd8-b672-f6c55b95c044",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e1b4932a-86d4-4fb4-a3b0-3174b600a6b2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "217770a5-2580-44b7-b379-68a6dc734448",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9d46852b-10b3-4f1a-94cc-1d3946f60f11",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3f1515b2-1146-4201-ab9d-cd4e9846f62a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b3cd5eec-b25a-4b08-af2b-64d2049c95ce",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d28507f0-2317-48e3-ab69-31b846041eea",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e9509fdd-136c-4936-83dd-d07fe890066d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3fe9c4e7-fbd5-4404-ac95-55d30b004662",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "24413571-374e-425e-b87a-785c23a53d77",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4a8ef2fb-4fe8-4725-882f-164e6445d089",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "26f95619-4930-4762-9173-53025b2d00f9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8c56e457-e249-4b54-aedc-afa5ffc5e41c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "75c1bf94-bc43-45db-8a1b-2786af1783e2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7e59c302-7677-4e06-811a-e4ef250f4ba0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "cb199357-6b20-4a8d-a888-c16dd7db25ba",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e61548b5-c5f0-471c-9439-a77e5bb24b54",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3578d72d-d697-40a8-9e2e-57983cef2ba8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4d54b0cf-4b18-40b7-9ee8-459d33eaedcb",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a46aea26-14ec-4c2e-baa6-e170a0f5a216",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c05235b0-2d7a-4dfc-9308-c7a4777a61d6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "79c9825d-9671-4dd6-8a9a-365b0cbe251e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "056813bd-7d5b-40bc-93a0-5e0c6dd565f4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "208b5e5c-9112-4f49-b8e6-38f554318601",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f7570415-bc54-4b9c-b210-04d80f1ccb88",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "89afe182-865c-4fcc-96af-bea75581a7b9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3cce3ca1-9ee0-4c3f-8f14-193e389ce27f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4249ab07-8d59-42cb-abd6-e078686665ae",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "26cd6844-ef2c-46a5-9c07-0e052b9d289d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a297092a-d57f-45b5-950d-ecda00ab6716",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6312e41f-5965-4cc8-b9f0-c7117d60a220",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "948e9e9a-3033-407b-8df4-8cc84009e2e2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d60ecfc0-0372-441d-a57f-de1629976770",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "03cd73ae-224d-4005-844e-40140a58d8e6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "cef13d63-602b-4b4e-a679-a9bb42fdffdc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "98f62654-46ec-4fc0-b4e5-52bbef88d9b7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e93c2d48-af50-4e36-bb7a-a22b59be26e9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8241054c-8078-4fb2-ba87-2f3179c9a1c6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b3ad4dee-3e97-4958-9c1b-0a4350c6bdc8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "962e4d01-dd2d-4cd7-b4b4-66b592a4cadd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ee3267f5-ac61-4ade-9493-d72330728cb4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2de5f590-8689-48e1-b19e-cd18793ea7f0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5eee992d-afc9-4c3f-8a3f-bdfd13eaedba",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0c6e82f1-3a3b-42c5-8e49-0eed4b779670",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c391e84f-f855-4b13-a329-1de39c6963dd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "229be1fc-4636-4a58-b517-eef573ff4027",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b13a127c-245c-4e4b-9582-611e0297a3f1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0380131a-4ee0-4b4e-b0bc-e8935b3deb01",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9ec33b59-3c6a-4ee7-ac0b-8ba543902b3c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "cc4659d2-30c9-4d14-b192-3c25e4046526",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "99a27dc4-99a4-4ac0-9571-a3bd4a444d09",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f54c2aee-8dc9-449b-9479-b33c8cc3a47e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fd2a5201-eb39-4073-b602-60c6b4008cb8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c2cdf488-d7fd-4203-bea7-dcef8e45b843",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9882a28b-2f14-479c-b989-77b326a325c3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3ba10ea6-1e71-4c88-aa9c-7d08a2539b81",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e9aa151a-2693-41aa-9f4e-57fedb1895f2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4d3a2d7c-fcc4-4472-a962-5227ad94f4de",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "14f10b46-a907-438e-a20f-509e0ad8d425",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0da1e004-80df-4112-ace7-32aa5e4c91c1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4c8f8384-1a43-41fc-b393-23d65aa074ab",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "169c0a08-6a6f-4b12-b5b2-d5eebc328c37",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2c7390c1-f146-4d26-87dc-2e50f4946048",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4ba9ec7c-169e-4747-8b45-f88331e19711",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ae19aa2c-9661-4fbe-88f1-61e36ced80f7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d991c04e-c61d-41db-9a74-e2f4f6a24ecf",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0cae34e7-27d3-4311-aa80-1eb8cb56008f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a2c4660b-a6f5-4a2e-b3be-ba5591dd613c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4da64dd8-aca4-4c83-96ab-54cbe17c1cd6",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "eeb7268b-688b-43f2-80e8-39bdc533284d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "deff4848-7434-4dd7-86b5-9bb437d95de9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "857c3e1b-af2a-4f1f-84d2-7e1e948f625f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "910a8208-32fa-4212-a568-5214e91103a5",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "e0385fdc-6b51-446f-b7d3-c5012fb28397",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "213344bd-ae6b-481b-aaf3-99e4a5f99bfc",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3d3d28c7-dcbf-4e74-a0fe-fb75ea38318a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "28bcccd2-4439-4725-83f5-178eb0ac490c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "21d97ed3-926d-449d-901b-733e70acca6f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9a27c081-636b-4e39-8a36-80c789b46d05",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9ae96f20-0f41-43de-9ebf-8a79ae43cc95",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ebdbe7ea-098a-4a51-8306-92ec1636cf97",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fa02dc6f-83d5-4070-8a33-dc9cb0289736",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6d58f831-3cc7-464b-9d39-abbcf7493a35",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "708657b3-cbf2-482c-884b-e3c5ef9525ab",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "57494846-06fa-4fae-b1d3-02aa74bf7805",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fdc3db8b-fc4b-43f7-b788-8f76bdd19477",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0962dd79-a9f9-4861-8ecb-d15f75c5f9c1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a5c525ec-aa51-4235-988f-d60e96a384d8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "51f9f8e1-0a52-4d4c-bb96-69db8431c50a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a3614c8a-ee75-4cdf-bdc5-308fd661be92",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2636c518-a52a-4d81-b1b5-9d368fb9b7d0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1944e954-7b8e-41f4-b4b9-f7a4ffadab6f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2ebf1afc-10e9-4492-8d7f-e10ef030052b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a6ae2088-1bb4-4633-8b41-2bea6671fec0",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "47971049-b6d0-496c-8362-3900615534ae",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7ccd8e00-3ddb-416e-905c-daaf5a86987e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c0e14754-dad8-445e-983d-ee6c602f275b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "87e26af0-f912-4e4b-896a-d03c6f06e720",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a6af7a21-838d-4364-bc04-23ec2939d22d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1475fb0f-4546-4f28-82e6-4be90a9bce52",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1b142935-a5d0-4c76-abef-1b4e0f23f915",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "38a21055-b111-4840-8760-34ec2bfe8640",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "13ccd04b-103d-4a24-b151-ca0203632c0d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "62af2607-533f-4153-b22a-c81c9eeb7f4d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8968e7d4-956e-47f3-8a96-e820cb8781ad",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0066f754-313f-446c-8098-464ea225e477",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f7d8e6b9-3962-4f58-a818-edd32e0d0bb8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8224022a-f8ea-415b-b2c0-a39fb75b78e3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a00351ff-3e01-4479-9d16-7a80cd2a54d8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8ead1c9d-6d7e-46bc-a6b7-1be3855a9366",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b10b2079-95e8-4055-9b72-1979a142df30",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "77af3ae5-40b3-414d-a86c-76a98a14b78a",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "cfbb18c1-181e-46c3-8776-304d08ca2768",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "d5ac53c0-4080-4269-af1d-cc65377fe200",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6319a0d4-8b28-4a5a-9758-37ca0411e96b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9aa91e32-0522-4320-bd66-b1d3d01e3e3c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "04a3f864-b372-40a3-8a1a-4eb86c3c7de8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "11f45b07-fc15-48b6-857f-0523907566f3",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f02156ec-6839-4b11-aadc-ac0da419dde7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "af71452b-81ff-4f35-b1a4-715a055095df",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2691763f-df2f-4b75-9a3d-6e05594c02e1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "04fe08c8-b9df-4842-9f6c-b72926ed8511",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0f7b0fde-11d3-4138-89a1-44b1915db485",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "9a55ea0d-26e3-434f-ae64-b035fef7ac04",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "70b4adce-04dd-473d-a03a-77f281864b79",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3e2c1778-c953-479d-9a90-0494983a2cbd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c793306c-8270-4bef-bd58-718f0648d2e7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7764224c-2c5f-4f93-871b-36bc997771e4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "cca19eb9-1707-4b5c-acbf-ffeefb6ed9f8",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "35d3a3e4-17f7-4467-acae-ecc77b6f0a44",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5f90a39c-8001-432a-b554-2a32e8024c64",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "71a4b19d-dd74-46b6-9430-a5dfdb4ea254",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ce61336a-56f9-4020-8c06-8fcf480693df",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "07cf5e7e-51ac-4d5b-bf96-f0341c74966e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6db9b60a-cb00-40d3-8b15-e84601af66b1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "199dd149-2663-432a-bf6c-175011b040de",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "789ed1b8-421e-4de1-8fc3-8bcb492ceae9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0c26bb42-cf69-48c8-bcec-757303a74e5f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "1946935d-5065-4594-9f0e-55a0fe3ee4fb",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c0df600c-459e-4ae1-bc9f-6b0232715b58",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ade14812-f617-49e9-b99c-1066a566363e",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ca53efb3-a643-4cac-8419-a8067dfb9c77",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "f3aca4f1-e5f8-4ca2-82ce-5ce580fa2895",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "03953ddc-074b-4e7b-b291-c0f572830888",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "40cbd880-0bc2-4acb-9922-c2bfbc794bae",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8ecf5cd4-390c-4476-98b7-f7b49cb1f149",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7d4c6294-2e81-4701-8e0b-4ca7c0f243dd",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "708eae15-cbdc-4a69-94fd-456b50dd4707",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "62dc219b-f1ba-4801-9240-9206230b0245",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b9b64e1b-5907-44a0-9b4f-3c72eea6769d",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "2784f984-9077-4d57-9e27-f2ed9bc51ed9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "030dbf9f-c21a-456a-b2b4-5bf1a452479b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "5cd0a411-19da-4f95-8fcb-2947995d1ef1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "fff5c608-23c7-486a-8356-8e6610178810",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "a3978b2d-38d2-4c60-88d3-9f2ffa6bcf2c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "34754aca-fa22-4414-8d0e-be2f84249d63",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "47e276ba-914d-4883-ad32-824cdc2d5829",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "4d949731-068f-4014-8ee3-1dfaa184de5f",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c5952c81-ae88-4626-b80a-b2cbb455dbe1",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "3eedb1c0-abf3-4fa5-8ac6-09d6c69644de",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "7e0fc3e2-a8a7-4942-a269-870a881ac5d4",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "aa696836-a6a7-4371-8160-f84cc42737f2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "b09bf78e-9260-4746-8594-d3fdd0baf17c",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "32113eb3-5145-46ae-81f1-8d654fff90bf",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "c2100276-b6e0-4b61-aa05-e2d0a7735c12",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "ce2f56ef-46be-4c5e-88e9-16c32a9c790b",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "6f3709e1-7432-409a-a8ae-aa5272865e38",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "206dba07-7015-4469-b819-7ab40ffe1446",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "8698035e-8814-4844-8ff3-db73043eccb7",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "73a009b1-59e8-4041-9175-60b14f463eb9",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        },
+        {
+          "Type": 2,
+          "Guid": "0271a4ff-943d-4371-8061-fedf4fe457b2",
+          "IndexU": 0,
+          "IndexV": 0,
+          "UorV": false,
+          "PatchIndex": 0,
+          "IsCNode": false,
+          "Position": 0
+        }
+      ],
+      "NodeType": "ExtensionNode",
+      "Id": "99b413f9e7004cba908d477468036649",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "72cc728c1fd341fbb2e81f3d32b5e8f6",
+          "Name": "Geometry",
+          "Description": "Selected geometry list.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Select geometry from Alias scene"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9ab86c97eeb84c8aa6b99469002ba36e",
+      "End": "718b37a216ae4661b9a64505d4e10765",
+      "Id": "9564b4421cfa42afb16e3d2215e0c23d"
+    },
+    {
+      "Start": "9ab86c97eeb84c8aa6b99469002ba36e",
+      "End": "fcb5fa2dfe094ee1b0c9426c07f43eed",
+      "Id": "3991f96724804ef297134b28ad5eead9"
+    },
+    {
+      "Start": "9ab86c97eeb84c8aa6b99469002ba36e",
+      "End": "8638e2d6a9e84ce7ab1f34bdaae024e6",
+      "Id": "07ac763e15424117958397a5c4b2966f"
+    },
+    {
+      "Start": "9ab86c97eeb84c8aa6b99469002ba36e",
+      "End": "b475974141404a94a20facc621039f37",
+      "Id": "13e4c8c237e7431c992c9eb693ca8f95"
+    },
+    {
+      "Start": "e553d47dcf0c4e34ae0bd1545abf3022",
+      "End": "3362ffca380e491ab747c95e6ab4ec15",
+      "Id": "3327bd9e3ed44f5fabb35a9e42b6a2c4"
+    },
+    {
+      "Start": "6c7ce549f7db46a4b18c8d9551a87bd9",
+      "End": "e2efe89e565743f4b0e997924bee07a9",
+      "Id": "41833b2fe3a44333b1f7ba13ce88b9ad"
+    },
+    {
+      "Start": "e2704f9c0b104faa81cd39c7989d1cbf",
+      "End": "32d5f958cc9d4eaea04a3250debae538",
+      "Id": "b20664c6f94b4ee5a033b0810b890a1f"
+    },
+    {
+      "Start": "f33dca5eb5f1437cb02bb5de0913364a",
+      "End": "0dc7b7397f9849b695c2c52f23679014",
+      "Id": "e17cbded8502484db0de9d31486c58c8"
+    },
+    {
+      "Start": "2ac165eb0da4444292f8cad042aae016",
+      "End": "68ec7bc51cca4866896f9969220461aa",
+      "Id": "ece3351244b44197a4542fc044707a13"
+    },
+    {
+      "Start": "42e02f01318342c79866a75c01c6dfd8",
+      "End": "18e7c1f438e740f2b56d92b88abd4dca",
+      "Id": "1913ce58625842349634e97abcf71624"
+    },
+    {
+      "Start": "548e516bb91343199fea7f3a2489f7c3",
+      "End": "6b37e8d6f4aa40988b3801391d4803db",
+      "Id": "10265390b7ac4f5cb281a52ff3668666"
+    },
+    {
+      "Start": "be1c99c7212946388a96fa6d4649ebfd",
+      "End": "30c86ef8e25e4faa9cf098232bce7e4b",
+      "Id": "99d9e6cd579046e8b4308385bca36f9f"
+    },
+    {
+      "Start": "be1c99c7212946388a96fa6d4649ebfd",
+      "End": "3c707ca2f8124cfab0ccd46ba9017de9",
+      "Id": "69eca13dabc24807a8627f2b80900691"
+    },
+    {
+      "Start": "12bf0c5c4a6b46cd91443ceb0418b622",
+      "End": "d83e393a0efe4084bf9979061aeb2a93",
+      "Id": "02113859fd8d444e9379a9a2a305b071"
+    },
+    {
+      "Start": "12bf0c5c4a6b46cd91443ceb0418b622",
+      "End": "0d6126ad765b4942a614acbc682a934b",
+      "Id": "29567a6cd38d4838853e362b17abcb46"
+    },
+    {
+      "Start": "e15d662a9407447c92097c53bb2b29e1",
+      "End": "84856edda5114730b9b728ec29d7d985",
+      "Id": "05ad5aacbfbe4cb2b90da2421cf2194b"
+    },
+    {
+      "Start": "437e47430f6b4e2cbd6b55e15ff1f8e7",
+      "End": "0592d9eb239a4d9daf0357fdd117cb43",
+      "Id": "4cefd2d33509434da3ce024c361c390a"
+    },
+    {
+      "Start": "437e47430f6b4e2cbd6b55e15ff1f8e7",
+      "End": "9e30a1e11eb34e12a8c0734cbf9bd7ef",
+      "Id": "e9c214f0cbe744f6827a40fa97b04420"
+    },
+    {
+      "Start": "f054103f1e454fe482da893140c2bec7",
+      "End": "0977cdf5c70d433abff128aba451225a",
+      "Id": "9ec91722632e45968eaaebac0ec28eeb"
+    },
+    {
+      "Start": "f054103f1e454fe482da893140c2bec7",
+      "End": "b171752d8a0e428db40984e118ac5848",
+      "Id": "fa4dcce588804fde97edaec5e32f7832"
+    },
+    {
+      "Start": "f449b45179844ef2821b83d4a251f8a5",
+      "End": "a4ebd8c64ca348e48f2cefaaeedf248e",
+      "Id": "f081942bfbb64545a98c9a371392c43b"
+    },
+    {
+      "Start": "be2e1acc00e8455899e03530e3f8eda0",
+      "End": "b00b3afde168489a903bb86ae0755570",
+      "Id": "d0fce44457a24ff4bb4166983490a849"
+    },
+    {
+      "Start": "d03329966a50490cbcfff2ffd8e073e8",
+      "End": "6cf88ab4bbab4d6680a33aa1e74aef27",
+      "Id": "d3f730ff988e4b96b184eeb0beced993"
+    },
+    {
+      "Start": "91ff1ec5890b472f9acb7e2a1c12660d",
+      "End": "b9a64a8c9821460d9cc74933929ad827",
+      "Id": "c254d855b0bb41af82aab9817d393d76"
+    },
+    {
+      "Start": "91ff1ec5890b472f9acb7e2a1c12660d",
+      "End": "24b8d919ff2e45589813666e3a4e5600",
+      "Id": "7da3e0d9edbd4734b1b199106e709e16"
+    },
+    {
+      "Start": "22ada324dcda4375b9c3bbbf51d6906b",
+      "End": "bc8e6ce5a6b242c1b822574d92100b14",
+      "Id": "ec3ec92f5d824bb884ca03aac3b65763"
+    },
+    {
+      "Start": "55b1efae179244fcb6d2399f83867c04",
+      "End": "32ed062a72cd48bfb5ae54abb9f17fe0",
+      "Id": "7fb786509a9a40549b55ed562482b6a6"
+    },
+    {
+      "Start": "96eb7fd3fe4f4bb09608792922da3bbe",
+      "End": "b1636045cebe450588d39525724b1a8d",
+      "Id": "e8ad8facd9eb4d3e918fc21548506f40"
+    },
+    {
+      "Start": "2eec1ae301f84775828f7261296b1afc",
+      "End": "f7520765c99c4934a924908ae1620848",
+      "Id": "065b296aaae348039f7d7987416dba01"
+    },
+    {
+      "Start": "12e687de80414b9eaf6dfdf8a34e1cf4",
+      "End": "0b6d4bba6f6449f7bf5821e598157d00",
+      "Id": "52eb4b4c00e44dfe822943fa3fd5eb77"
+    },
+    {
+      "Start": "418f8569cd6b421ab3557235f3d3f129",
+      "End": "48b007da88b7460096120e60af9307cb",
+      "Id": "1b148d34862b42db8c0cfb65abc9fcd6"
+    },
+    {
+      "Start": "f2f820731763494baa189c3ec70c1413",
+      "End": "4c8c20e585784fc8ad619d1d8e325282",
+      "Id": "6c4353daf3614827897f48fcf7d81378"
+    },
+    {
+      "Start": "34853d8244a7460cbdfc36e69e7d21a5",
+      "End": "a810fa802dad489790852bea80660fe4",
+      "Id": "d2b2b885404a4428b54a55b9656f2ae3"
+    },
+    {
+      "Start": "f5d2e2c8eea64f0ba759a7181d8ae57f",
+      "End": "1e49b8f7fea844e89a965352c0535cf3",
+      "Id": "1765875298e3473c8e23f9e18ff0cda6"
+    },
+    {
+      "Start": "aaf452ece88c4b08a2e2be6880877e07",
+      "End": "081f7711c4d041baa78e4acbd59662a5",
+      "Id": "9f974aeb990d48d99932947864ab13c9"
+    },
+    {
+      "Start": "a709f94fcc7c4289b7aa7ec3cc125684",
+      "End": "f5f5fb4829e14c69806d91bfcb1b5509",
+      "Id": "5b413a7bc2064df78dea6b8633e8950b"
+    },
+    {
+      "Start": "a08c4f2f16c34536a99a58549db43b1e",
+      "End": "ddfd3eb1ebd841d6aaf56a9b60130ef7",
+      "Id": "febfe8499f6a42d1be187d8212c74480"
+    },
+    {
+      "Start": "8c44246ccd4a4cdbaa97eded4ad0d2e8",
+      "End": "f62d15b6b7f24bc48fa108a09af809b8",
+      "Id": "7a1e79f1fc974fb88e488ac4dc9d7b9b"
+    },
+    {
+      "Start": "e0506d90383d4bd0b7fca7b0a3b86ebe",
+      "End": "7a1fac52fece4389b434ea4fbc8e2fdb",
+      "Id": "8b0cd766caf8461a92fb2e7ae9418ad1"
+    },
+    {
+      "Start": "6df8e12c75dd46b19447dca59f364c2f",
+      "End": "24196d52fae742f58047e4973002d927",
+      "Id": "b665c56f63bf4239bbe14f72c68757a1"
+    },
+    {
+      "Start": "a3a496bbbc3c45b6a2d52a123a4d86d6",
+      "End": "360dc33347654209b76bdc64d19f00da",
+      "Id": "8a3b48a68e064e2ca4370fbd5bde27f8"
+    },
+    {
+      "Start": "4266e64d16ab479eb9ffa97865893dfb",
+      "End": "0b5822c3755e45b18f676ba69afa37a7",
+      "Id": "d5f765a39b3747f6b4bc610be3813758"
+    },
+    {
+      "Start": "894eb0877bea47ffa46e3b493fea8879",
+      "End": "0c2a06016b9842009fb4e3f1e8cc3eb6",
+      "Id": "e78e397145304f1b9ea3c0f96f799c26"
+    },
+    {
+      "Start": "38eec09142724c9a97be7a7018349646",
+      "End": "ab6d6ee4cdd3447ab7ba77f480156499",
+      "Id": "24a6d9f612fc41ebb86e8d5949b64535"
+    },
+    {
+      "Start": "8db4bf532d7f44d08a6c0a5f74ee27f4",
+      "End": "5854441129b2426b953f5db55b37fa2b",
+      "Id": "b79f85466450438c8b7382cc21608dc1"
+    },
+    {
+      "Start": "94a280a5049b4f9c9c658c31fd28eaa5",
+      "End": "c29e668e75b34ffca47e15c5fa68baa2",
+      "Id": "66f438255c504a64af04ecfde0d8bf94"
+    },
+    {
+      "Start": "9fe896639e5c4049952efad403a04e78",
+      "End": "31cfb83ad5564067bde6658fc19ca318",
+      "Id": "d917cfab6e3d45faa2d09e7b3f436e9e"
+    },
+    {
+      "Start": "a3992c7783e04960809019a87a75050a",
+      "End": "89599cc4fbdb42b8a6c4484f05024822",
+      "Id": "4661ac593a894536b5d683743eecc533"
+    },
+    {
+      "Start": "560fd8598bd74ae98757650b17aeeecd",
+      "End": "643571f75f1c4234ae301fe21e125559",
+      "Id": "c7d2dec6492b434480e6a234c1d0f47c"
+    },
+    {
+      "Start": "6d4e342212574a0b8c429d4e424a60ff",
+      "End": "05eceb7a3da64ca2bd2911b6e518f571",
+      "Id": "b7458795327a4579901ec797c64cc08f"
+    },
+    {
+      "Start": "031e2a4e8c394517b97e3e7a9fe87cad",
+      "End": "7a6a4a243dc5428eac4edc607956d58d",
+      "Id": "78a97e27b1e34d388534fa3d1804936e"
+    },
+    {
+      "Start": "72cc728c1fd341fbb2e81f3d32b5e8f6",
+      "End": "8ed9039b7b764eb88b7c0710522c1dc7",
+      "Id": "af7775ccc51c4b1ab0ba2e6ac65543e0"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.1.6255",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": 3889.9023886309255,
+      "EyeY": 83.2405188869725,
+      "EyeZ": 583.804999822579,
+      "LookX": -127.84928823351038,
+      "LookY": -81.759630660429139,
+      "LookZ": -133.27049803827617,
+      "UpX": -0.13801785137121869,
+      "UpY": 0.97992470462150782,
+      "UpZ": -0.14387024006623142
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": false,
+        "Name": "Select from Alias",
+        "Id": "7aa5697c87964ba19e9b51705d8aa956",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 88.842862913825456,
+        "Y": -887.53933574830091
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Curve.ByIsoCurveOnSurface",
+        "Id": "8d4c387fec3f439a88f9d4572bceb142",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1299.3415196416659,
+        "Y": -451.25850736913856
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PolyCurve.ByJoinedCurves",
+        "Id": "05da563dd03c49089edcf32a002fcadb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1882.9732950322577,
+        "Y": -455.100420048764
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List.Transpose",
+        "Id": "7d3b1d8d8f9d48aab703f18d8f7a17da",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1606.0850243158548,
+        "Y": -462.28518988894
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f1b6424b6c624589973d17d1f97419c7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1987.4094564534735,
+        "Y": -327.91784039262836
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Curve.PointAtParameter",
+        "Id": "e7755dbc1b2c4b04b9e770277a18a447",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2288.2979060428011,
+        "Y": -448.64797756913663
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.DistanceTo",
+        "Id": "fa5761e21b12458084b597613517e4a8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2992.8089447234152,
+        "Y": -356.82695160119471
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.MinimumItem",
+        "Id": "6900047df7f14248bd155e37ef0a3271",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3597.8089447234152,
+        "Y": -343.82695160119471
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "c681142ed8a949e49778a223aedadcb0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2729.21528954316,
+        "Y": -468.59618834255184
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "b0648dd63df042b584b4230bd61b37c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3311.8089447234152,
+        "Y": -356.82695160119471
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.IndexOf",
+        "Id": "6fb5f05189f347118b466e79237889de",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3856.8089447234152,
+        "Y": -369.82695160119471
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List.GetItemAtIndex",
+        "Id": "a1495da7415042578064b258f424a04d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4143.1103762738985,
+        "Y": -496.03718098841733
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.UVParameterAtPoint",
+        "Id": "42700d28247a4a469ff7a6993091cafa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4420.8089447234152,
+        "Y": -376.32695160119471
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Surface.CoordinateSystemAtParameter",
+        "Id": "60b500d9130e473580c7d2c6652a1671",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 5021.2127170983413,
+        "Y": -493.1536918347054
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "UV.U",
+        "Id": "cf11ff25be79496cadbf8bb25ad8d3f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4712.8089447234152,
+        "Y": -430.32695160119471
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "UV.V",
+        "Id": "0abcab873b834b60898c2d18f47caa6b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4712.8089447234152,
+        "Y": -322.32695160119471
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Geometry.Transform",
+        "Id": "c01c9e7b0c804b3ca22465b51e923e02",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 6171.8540467349358,
+        "Y": -236.2678085088296
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Cylinder.ByRadiusHeight",
+        "Id": "e68701187d894d029e02d0e38f982fe7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4517.1911730909742,
+        "Y": -1013.4444366945993
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Hole Diameter",
+        "Id": "d5db8eaaee474052a45bed8ba1f4f2f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 464.13768251927979,
+        "Y": -484.42151976363971
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Surface.SubtractFrom",
+        "Id": "758aed97d05f4342ad7d024ae6364f0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7358.2412119778164,
+        "Y": -682.26622512820893
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Solid.ByUnion",
+        "Id": "263b63d3d5fb4a0a99f45cd48391f783",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 6662.3001302014281,
+        "Y": -358.1736091348921
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "CoordinateSystem.ByOrigin",
+        "Id": "888169693b284549898b5ac984c98b28",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3940.4678420465489,
+        "Y": -981.03077952922854
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ed212ab2656f4950ac010aa156bcae06",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3752.5535663947385,
+        "Y": -934.7781107704036
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number of Rows",
+        "Id": "7030d483654147fca2736983f2c758bd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 462.04175893982256,
+        "Y": -399.0979565916345
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Number of Holes per Row",
+        "Id": "a693075a055740eb809e73dfade1f695",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 471.84617834376468,
+        "Y": -313.61428590726808
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a5238f2c2c134b2f92f3507cbde5694c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4259.4551310175857,
+        "Y": -1045.0829210247553
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3da547cbdb3d4901b88194034b2687c1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4271.6316027676448,
+        "Y": -943.11537387583553
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Bake to Alias",
+        "Id": "80cf03bdce47434e9c13ee9d5ae295a3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 10063.016899053928,
+        "Y": -430.13170754446503
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "SURFACES",
+        "Id": "cb2ffaaafdf5482391a795e87a1cf6a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 6118.183596132908,
+        "Y": -740.88573192125671
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Surface.Thicken",
+        "Id": "aa562f978fb94d7cb3974d10c571eb90",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7379.6951987364255,
+        "Y": -165.95418192170803
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "cd0a426236b448349bc9aec0a450c466",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7055.6870135320423,
+        "Y": -82.900579973885669
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PolySurface.ByJoinedSurfaces",
+        "Id": "d1493b80e61e46df8c3856598557672b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7009.942000385644,
+        "Y": -179.18929213187766
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PolySurface.BySolid",
+        "Id": "faa22fe874a74a52a311e263f6240b86",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7022.0272629469118,
+        "Y": -280.04244016981181
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "PolySurface.Surfaces",
+        "Id": "9304c890d49245be9ea32e4629854ea4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7369.4510019313993,
+        "Y": -280.2654794823992
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Surface.SubtractFrom",
+        "Id": "739c9968bbad4b999faff424ce716c29",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 7721.9926454765264,
+        "Y": -213.97685550196422
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List Create",
+        "Id": "9134f490bc43466697ba44710d5f074e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 9112.0069967054042,
+        "Y": -465.1636169630475
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List.Clean",
+        "Id": "3c3a3c5f38fa45879ea021bc4ab6c819",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 8720.1864745993789,
+        "Y": -410.59134186582924
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "List.Flatten",
+        "Id": "fb94a2c6c8f042ca8feffa1481ac7f9b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 9401.6592435200182,
+        "Y": -437.16055302149027
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "ab50988be94f43e8902231c8020c2cc4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 916.58275093998918,
+        "Y": -390.9881380473085
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "UV-Direction",
+        "Id": "ca88ca657ec141cd98ad946d8c16c8f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 910.73710944845,
+        "Y": -451.05795751900206
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Inside/Outside",
+        "Id": "8e8a4dc07d524e1395f88d138acd8891",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 922.690337783273,
+        "Y": -268.04914510179123
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Geometry.Translate",
+        "Id": "2098a30097c34e44837a4dab4799c31d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 9713.9909945717554,
+        "Y": -436.6113625419548
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "60edba30668f4a77bb425b0b0dbc7c85",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 9513.0,
+        "Y": -122.0
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Select from Alias",
+        "Id": "99b413f9e7004cba908d477468036649",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 6905.3188943641608,
+        "Y": -792.085252971409
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "c07776d3e8da4584b06e8fefcd99636a",
+        "Title": "CS at CrvPt on Srf",
+        "Nodes": [
+          "fa5761e21b12458084b597613517e4a8",
+          "6900047df7f14248bd155e37ef0a3271",
+          "c681142ed8a949e49778a223aedadcb0",
+          "b0648dd63df042b584b4230bd61b37c1",
+          "6fb5f05189f347118b466e79237889de",
+          "a1495da7415042578064b258f424a04d",
+          "42700d28247a4a469ff7a6993091cafa",
+          "60b500d9130e473580c7d2c6652a1671",
+          "cf11ff25be79496cadbf8bb25ad8d3f7",
+          "0abcab873b834b60898c2d18f47caa6b"
+        ],
+        "Left": 2719.21528954316,
+        "Top": -549.03718098841728,
+        "Width": 2586.9974275551813,
+        "Height": 319.71022938722257,
+        "FontSize": 36.0,
+        "InitialTop": -496.03718098841733,
+        "InitialHeight": 318.71022938722257,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "51adb8f7bd404b1d930df7980ab806b1",
+        "Title": "Controls",
+        "Nodes": [
+          "d5db8eaaee474052a45bed8ba1f4f2f7",
+          "7030d483654147fca2736983f2c758bd",
+          "a693075a055740eb809e73dfade1f695"
+        ],
+        "Left": 452.04175893982256,
+        "Top": -537.42151976363971,
+        "Width": 328.80441940394212,
+        "Height": 291.80723385637162,
+        "FontSize": 36.0,
+        "InitialTop": -484.42151976363971,
+        "InitialHeight": 315.80723385637162,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "2395161e939c4488bab8e5e52f881048",
+        "Title": "Input",
+        "Nodes": [
+          "7aa5697c87964ba19e9b51705d8aa956"
+        ],
+        "Left": 78.842862913825456,
+        "Top": -940.53933574830091,
+        "Width": 196.0,
+        "Height": 149.0,
+        "FontSize": 36.0,
+        "InitialTop": -887.53933574830091,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "152a1a61cd2c40fd9147592a3185a2fa",
+        "Title": "Isocurve Generator",
+        "Nodes": [
+          "8d4c387fec3f439a88f9d4572bceb142",
+          "05da563dd03c49089edcf32a002fcadb",
+          "7d3b1d8d8f9d48aab703f18d8f7a17da",
+          "f1b6424b6c624589973d17d1f97419c7",
+          "e7755dbc1b2c4b04b9e770277a18a447",
+          "ab50988be94f43e8902231c8020c2cc4"
+        ],
+        "Left": 906.58275093998918,
+        "Top": -515.28518988894007,
+        "Width": 1582.7151551028119,
+        "Height": 280.3673494963117,
+        "FontSize": 36.0,
+        "InitialTop": -462.28518988894,
+        "InitialHeight": 279.36734949631165,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "0ec8f0a5c8354e8ea684ff789d835af0",
+        "Title": "Cylinder Generator",
+        "Nodes": [
+          "e68701187d894d029e02d0e38f982fe7",
+          "888169693b284549898b5ac984c98b28",
+          "ed212ab2656f4950ac010aa156bcae06",
+          "a5238f2c2c134b2f92f3507cbde5694c",
+          "3da547cbdb3d4901b88194034b2687c1"
+        ],
+        "Left": 3742.5535663947385,
+        "Top": -1098.0829210247553,
+        "Width": 991.63760669623571,
+        "Height": 256.30481025435165,
+        "FontSize": 36.0,
+        "InitialTop": -1045.0829210247553,
+        "InitialHeight": 255.30481025435165,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "e31ba0a40ed74c65a6c476e1fee0d1b4",
+        "Title": "CLEAN OUTPUT",
+        "Nodes": [
+          "9134f490bc43466697ba44710d5f074e",
+          "3c3a3c5f38fa45879ea021bc4ab6c819",
+          "fb94a2c6c8f042ca8feffa1481ac7f9b"
+        ],
+        "Left": 8710.1864745993789,
+        "Top": -518.1636169630475,
+        "Width": 887.47276892063928,
+        "Height": 226.57227509721827,
+        "FontSize": 36.0,
+        "InitialTop": -465.1636169630475,
+        "InitialHeight": 199.57227509721827,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "6b5b5eebbd594220814ff922c8105bb3",
+        "Title": "TRIM SURFACES",
+        "Nodes": [
+          "758aed97d05f4342ad7d024ae6364f0f"
+        ],
+        "Left": 7348.2412119778164,
+        "Top": -735.26622512820893,
+        "Width": 298.0,
+        "Height": 172.0,
+        "FontSize": 36.0,
+        "InitialTop": -682.26622512820893,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "eaf377ce5feb49539530c9ed6f2e374d",
+        "Title": "PLACE AND TRIM CYLINDERS",
+        "Nodes": [
+          "c01c9e7b0c804b3ca22465b51e923e02",
+          "263b63d3d5fb4a0a99f45cd48391f783",
+          "aa562f978fb94d7cb3974d10c571eb90",
+          "cd0a426236b448349bc9aec0a450c466",
+          "d1493b80e61e46df8c3856598557672b",
+          "faa22fe874a74a52a311e263f6240b86",
+          "9304c890d49245be9ea32e4629854ea4",
+          "739c9968bbad4b999faff424ce716c29"
+        ],
+        "Left": 6161.8540467349358,
+        "Top": -411.1736091348921,
+        "Width": 1848.1385987415906,
+        "Height": 431.27302916100643,
+        "FontSize": 36.0,
+        "InitialTop": -358.1736091348921,
+        "InitialHeight": 420.27302916100643,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 268.69727439272771,
+    "Y": 742.47241494792524,
+    "Zoom": 0.45205530675624411
+  }
+}
